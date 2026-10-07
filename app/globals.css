@@ -1,0 +1,30 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root { /* Light: papel artesanal */
+  --bg: 253 251 247; --surface: 246 242 234; --fg: 26 26 26;
+  --muted: 105 100 92; --accent: 150 98 52; --line: 226 220 208;
+}
+.dark { /* Dark: grafite + bronze */
+  --bg: 10 10 11; --surface: 18 18 20; --fg: 236 232 222;
+  --muted: 154 150 142; --accent: 196 149 106; --line: 42 42 46;
+}
+html { scroll-behavior: smooth; }
+body { @apply bg-bg text-fg font-sans antialiased; transition: background-color .3s, color .3s; }
+::selection { background: rgb(var(--accent) / .35); }
+:focus-visible { outline: 2px solid rgb(var(--accent)); outline-offset: 3px; }
+
+@layer components {
+  .eyebrow { @apply font-sans text-[11px] uppercase tracking-[0.18em] text-accent; }
+  .prose-pp { @apply font-body text-[1.125rem] leading-[1.75]; }
+  .prose-pp p { @apply mb-6; }
+  .prose-pp h2 { @apply font-display text-3xl font-semibold mt-14 mb-5 leading-tight; }
+  .prose-pp h3 { @apply font-display text-2xl font-semibold mt-10 mb-4; }
+  .prose-pp ul { @apply mb-6 space-y-2 pl-0 list-none; }
+  .prose-pp li { @apply relative pl-6; }
+  .prose-pp li::before { content: "◆"; @apply absolute left-0 top-[0.2em] text-[0.6rem] text-accent; }
+  .prose-pp > p:first-of-type::first-letter { @apply font-display float-left text-7xl leading-[0.8] pr-3 pt-2 text-accent; }
+  .pull { @apply font-display italic text-2xl md:text-3xl leading-snug my-12 py-2 pl-6 border-l-2 border-accent; }
+  .cover { background: radial-gradient(120% 90% at 20% 10%, rgb(var(--accent) / .35), transparent 60%), linear-gradient(135deg, rgb(var(--surface)), rgb(var(--bg))); }
+}
